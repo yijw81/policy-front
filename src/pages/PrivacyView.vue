@@ -1,14 +1,14 @@
 <template>
-  <main class="mx-auto max-w-3xl px-4 py-12">
+  <main class="mx-auto max-w-6xl px-4 py-12">
     <div class="rounded-xl border border-slate-200 bg-white p-8">
       <h1 class="text-2xl font-bold text-slate-900">개인정보처리방침</h1>
-      <p class="mt-1 text-sm text-slate-500">시행일: 2025년 1월 1일</p>
+      <p class="mt-1 text-sm text-slate-500">시행일: 2026년 1월 1일</p>
 
       <div class="mt-8 space-y-8 text-sm leading-relaxed text-slate-700">
         <section>
           <h2 class="mb-3 text-base font-semibold text-slate-900">제1조 (개인정보의 처리 목적)</h2>
           <p class="mb-2">
-            주식회사 정책플랫폼(이하 "회사")은 다음의 목적을 위하여 개인정보를 처리합니다.
+            주식회사 퍼스트트리(이하 "회사")은 다음의 목적을 위하여 개인정보를 처리합니다.
             처리하는 개인정보는 다음 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는
             별도의 동의를 받는 등 필요한 조치를 이행합니다.
           </p>
@@ -86,7 +86,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="px-4 py-3">KG이니시스</td>
+                  <td class="px-4 py-3">알리고</td>
                   <td class="px-4 py-3">휴대폰 본인 인증</td>
                 </tr>
               </tbody>
@@ -105,7 +105,7 @@
             <li>개인정보 삭제 요청</li>
           </ul>
           <p class="mt-2">
-            위 권리 행사는 이메일(contact@policy-platform.kr) 또는 서면으로 하실 수 있으며, 회사는
+            위 권리 행사는 이메일(contact@firsttree.net) 또는 서면으로 하실 수 있으며, 회사는
             지체 없이(10일 이내) 조치합니다.
           </p>
         </section>
@@ -129,10 +129,10 @@
           <div class="rounded-lg bg-slate-50 p-4">
             <p class="font-medium text-slate-800">개인정보 보호책임자</p>
             <ul class="mt-1 space-y-1 text-slate-600">
-              <li>성명: 홍길동</li>
+              <li>성명: 이재환</li>
               <li>직책: 개인정보 보호책임자</li>
-              <li>이메일: privacy@policy-platform.kr</li>
-              <li>전화: 02-1234-5678</li>
+              <li>이메일: contact@firsttree.net</li>
+              <li>전화: 070-4156-4156</li>
             </ul>
           </div>
           <p class="mt-3">
@@ -156,8 +156,8 @@
 
         <section class="rounded-lg bg-slate-50 p-4">
           <p class="text-xs text-slate-500">
-            본 개인정보처리방침은 2025년 1월 1일부터 시행됩니다.<br />
-            문의: 주식회사 정책플랫폼 | 이메일: contact@policy-platform.kr
+            본 개인정보처리방침은 2026년 1월 1일부터 시행됩니다.<br />
+            문의: 주식회사 퍼스트트리| 이메일: contact@firsttree.net
           </p>
         </section>
       </div>

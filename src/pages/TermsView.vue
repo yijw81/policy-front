@@ -1,14 +1,14 @@
 <template>
-  <main class="mx-auto max-w-3xl px-4 py-12">
+  <main class="mx-auto max-w-6xl px-4 py-12">
     <div class="rounded-xl border border-slate-200 bg-white p-8">
       <h1 class="text-2xl font-bold text-slate-900">이용약관</h1>
-      <p class="mt-1 text-sm text-slate-500">시행일: 2025년 1월 1일</p>
+      <p class="mt-1 text-sm text-slate-500">시행일: 2026년 1월 1일</p>
 
       <div class="mt-8 space-y-8 text-sm leading-relaxed text-slate-700">
         <section>
           <h2 class="mb-3 text-base font-semibold text-slate-900">제1조 (목적)</h2>
           <p>
-            이 약관은 주식회사 정책플랫폼(이하 "회사")이 운영하는 정책 지지 선언 플랫폼(이하 "서비스")의
+            이 약관은 주식회사 퍼스트트리(이하 "회사")이 운영하는 정책 지지 선언 플랫폼(이하 "서비스")의
             이용 조건 및 절차, 회사와 이용자 간의 권리·의무 및 책임 사항을 규정함을 목적으로 합니다.
           </p>
         </section>
@@ -102,7 +102,7 @@
 
         <section class="rounded-lg bg-slate-50 p-4">
           <p class="text-xs text-slate-500">
-            문의: 주식회사 정책플랫폼 | 이메일: contact@policy-platform.kr | 전화: 02-1234-5678
+            문의: 주식회사 퍼스트트리| 이메일: contact@firsttree.net | 전화: 070-4156-4156
           </p>
         </section>
       </div>
