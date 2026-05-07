@@ -28,12 +28,12 @@ export async function supportPolicy(policyId: string, payload: SupportSignPayloa
   return data
 }
 
-export async function requestPhoneVerification(phone: string): Promise<void> {
-  await http.post('/phone/request', { phone })
+export async function requestPhoneVerification(phone: string, policyId: string): Promise<void> {
+  await http.post('/phone/request', { phone, policyId })
 }
 
-export async function verifyPhone(phone: string, code: string): Promise<string> {
-  const { data } = await http.post<{ token: string }>('/phone/verify', { phone, code })
+export async function verifyPhone(phone: string, policyId: string, code: string): Promise<string> {
+  const { data } = await http.post<{ token: string }>('/phone/verify', { phone, policyId, code })
   return data.token
 }
 
