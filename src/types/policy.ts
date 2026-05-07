@@ -28,9 +28,10 @@ export interface Policy {
 
 export interface SupportSignPayload {
   name: string
+  phone: string
   message: string
-  isPublic: boolean
   agreedPrivacy: boolean
+  verificationToken: string
 }
 
 export interface CreatePolicyPayload {
