@@ -1,19 +1,12 @@
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { CreatePolicyPayload, Policy, SupportSignPayload } from '@/types/policy'
 import { createPolicy, fetchPolicies, fetchPolicyById, supportPolicy } from '@/api/policyApi'
-import { getSignedPolicies } from '@/utils/storage'
 
 export const usePolicyStore = defineStore('policy', () => {
   const policies = ref<Policy[]>([])
   const currentPolicy = ref<Policy | null>(null)
   const loading = ref(false)
-  const signedPolicies = ref<string[]>(getSignedPolicies())
-
-  const isSignedCurrentPolicy = computed(() => {
-    if (!currentPolicy.value) return false
-    return signedPolicies.value.includes(currentPolicy.value.id)
-  })
 
   async function loadPolicies() {
     loading.value = true
@@ -44,9 +37,8 @@ export const usePolicyStore = defineStore('policy', () => {
     currentPolicy.value = updated
     const idx = policies.value.findIndex((policy) => policy.id === policyId)
     if (idx >= 0) policies.value[idx] = updated
-    signedPolicies.value = getSignedPolicies()
     return updated
   }
 
-  return { policies, currentPolicy, loading, signedPolicies, isSignedCurrentPolicy, loadPolicies, loadPolicy, addPolicy, signPolicy }
+  return { policies, currentPolicy, loading, loadPolicies, loadPolicy, addPolicy, signPolicy }
 })

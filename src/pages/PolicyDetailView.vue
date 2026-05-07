@@ -24,9 +24,7 @@ async function submitSign(payload: SupportSignPayload) {
     await store.signPolicy(store.currentPolicy.id, payload)
     showModal.value = false
     toast.value = '지지 서명이 완료되었습니다.'
-    setTimeout(() => {
-      toast.value = ''
-    }, 1800)
+    setTimeout(() => { toast.value = '' }, 1800)
   } catch (e) {
     error.value = e instanceof Error ? e.message : '서명 처리 중 오류가 발생했습니다.'
   } finally {
@@ -62,11 +60,10 @@ onMounted(() => {
 
         <div class="mt-4 flex flex-wrap items-center gap-3">
           <button
-            :disabled="store.isSignedCurrentPolicy"
-            class="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white disabled:cursor-not-allowed disabled:bg-slate-400"
+            class="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white"
             @click="showModal = true"
           >
-            {{ store.isSignedCurrentPolicy ? '이미 지지 서명했습니다' : '지지 서명하기' }}
+            지지 서명하기
           </button>
           <p v-if="error" class="text-sm text-rose-600">{{ error }}</p>
           <p v-if="toast" class="text-sm text-emerald-600">{{ toast }}</p>
@@ -97,6 +94,12 @@ onMounted(() => {
       </PolicySection>
     </div>
 
-    <SupportSignModal :open="showModal" :loading="submitting" @close="showModal = false" @submit="submitSign" />
+    <SupportSignModal
+      :open="showModal"
+      :loading="submitting"
+      :policyId="store.currentPolicy?.id ?? ''"
+      @close="showModal = false"
+      @submit="submitSign"
+    />
   </main>
 </template>
