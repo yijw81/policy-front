@@ -44,7 +44,7 @@ async function onSubmit() {
       <input v-model="form.title" required type="text" placeholder="정책 제목" class="w-full rounded-lg border border-slate-300 px-3 py-2" />
       <input v-model="form.description" required type="text" placeholder="짧은 설명" class="w-full rounded-lg border border-slate-300 px-3 py-2" />
       <select v-model="form.category" class="w-full rounded-lg border border-slate-300 px-3 py-2">
-        <option>사회</option><option>경제</option><option>주거</option><option>환경</option><option>교육</option>
+        <option>사회</option><option>경제</option><option>보건</option><option>주거</option><option>환경</option><option>교육</option>
       </select>
       <input v-model="form.author" type="text" placeholder="작성자" class="w-full rounded-lg border border-slate-300 px-3 py-2" />
       <textarea v-model="form.summary" required rows="3" placeholder="핵심 요약" class="w-full rounded-lg border border-slate-300 px-3 py-2" />
