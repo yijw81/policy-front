@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { CreatePolicyPayload, Policy, SupportSignPayload } from '@/types/policy'
-import { createPolicy, fetchPolicies, fetchPolicyById, supportPolicy } from '@/api/policyApi'
+import { createPolicy, fetchPolicies, fetchPolicyById, supportPolicy, updatePolicy } from '@/api/policyApi'
 
 export const usePolicyStore = defineStore('policy', () => {
   const policies = ref<Policy[]>([])
@@ -32,6 +32,14 @@ export const usePolicyStore = defineStore('policy', () => {
     return created
   }
 
+  async function editPolicy(policyId: string, payload: CreatePolicyPayload): Promise<Policy> {
+    const updated = await updatePolicy(policyId, payload)
+    currentPolicy.value = updated
+    const idx = policies.value.findIndex((p) => p.id === policyId)
+    if (idx >= 0) policies.value[idx] = updated
+    return updated
+  }
+
   async function signPolicy(policyId: string, payload: SupportSignPayload): Promise<Policy> {
     const updated = await supportPolicy(policyId, payload)
     currentPolicy.value = updated
@@ -40,5 +48,5 @@ export const usePolicyStore = defineStore('policy', () => {
     return updated
   }
 
-  return { policies, currentPolicy, loading, loadPolicies, loadPolicy, addPolicy, signPolicy }
+  return { policies, currentPolicy, loading, loadPolicies, loadPolicy, addPolicy, editPolicy, signPolicy }
 })

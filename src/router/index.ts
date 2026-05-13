@@ -7,6 +7,7 @@ const router = createRouter({
     { path: '/policies', redirect: '/' },
     { path: '/policies/new', component: () => import('@/pages/PolicyCreateView.vue') },
     { path: '/policies/:id', component: () => import('@/pages/PolicyDetailView.vue') },
+    { path: '/policies/:id/edit', component: () => import('@/pages/PolicyEditView.vue') },
     { path: '/terms', component: () => import('@/pages/TermsView.vue') },
     { path: '/privacy', component: () => import('@/pages/PrivacyView.vue') }
   ]
