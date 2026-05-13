@@ -73,6 +73,7 @@ onMounted(() => {
       <PolicySection title="정책 핵심 요약"><p>{{ store.currentPolicy.summary }}</p></PolicySection>
       <PolicySection title="상세 설명"><p class="whitespace-pre-line">{{ store.currentPolicy.content }}</p></PolicySection>
       <PolicySection title="핵심 조항"><ul class="list-disc space-y-1 pl-5"><li v-for="(item, idx) in store.currentPolicy.clauses" :key="idx">{{ item }}</li></ul></PolicySection>
+      <!--
       <PolicySection title="기대 효과"><ul class="list-disc space-y-1 pl-5"><li v-for="(item, idx) in store.currentPolicy.expectedEffects" :key="idx">{{ item }}</li></ul></PolicySection>
       <PolicySection title="FAQ / 반대 의견에 대한 답변">
         <div class="space-y-3">
@@ -92,6 +93,7 @@ onMounted(() => {
           <p class="text-sm">현재 {{ store.currentPolicy.supporters.length }}명이 지지 서명했습니다.</p>
         </div>
       </PolicySection>
+      -->
     </div>
 
     <SupportSignModal

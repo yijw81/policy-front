@@ -1,16 +1,7 @@
 <template>
   <footer class="mt-auto border-t border-slate-200 bg-white">
     <div class="mx-auto max-w-6xl px-4 py-10">
-      <div class="grid gap-8 md:grid-cols-3">
-        <!-- 회사 정보 -->
-        <div class="space-y-2">
-          <h3 class="text-base font-bold text-slate-900">정책 지지 선언 플랫폼</h3>
-          <p class="text-sm leading-relaxed text-slate-500">
-            시민이 직접 정책을 제안하고 지지하는<br />
-            민주적 참여 플랫폼입니다.
-          </p>
-        </div>
-
+      <div class="grid gap-8 md:grid-cols-2">
         <!-- 회사 정보 상세 -->
         <div class="space-y-2">
           <h4 class="text-sm font-semibold text-slate-700">회사 정보</h4>

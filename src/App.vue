@@ -6,7 +6,7 @@
             to="/policies"
             class="text-lg font-bold text-slate-900"
         >
-          정책 지지 선언 플랫폼
+          우리는 좋은 정책을 지지합니다.
         </RouterLink>
       </div>
     </nav>
