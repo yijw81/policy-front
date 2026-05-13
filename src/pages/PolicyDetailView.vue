@@ -7,6 +7,7 @@ import SupporterList from '@/components/SupporterList.vue'
 import SupportSignModal from '@/components/SupportSignModal.vue'
 import type { SupportSignPayload } from '@/types/policy'
 import DOMPurify from 'dompurify'
+import ImageLightbox from '@/components/ImageLightbox.vue'
 
 const route = useRoute()
 const store = usePolicyStore()
@@ -16,6 +17,10 @@ const toast = ref('')
 const error = ref('')
 
 const recentSupporters = computed(() => store.currentPolicy?.supporters.slice(0, 6) ?? [])
+
+const lightboxSrc = ref('')
+function openLightbox(url: string) { lightboxSrc.value = url }
+function closeLightbox() { lightboxSrc.value = '' }
 
 const safeContent = computed(() =>
   store.currentPolicy
@@ -90,7 +95,7 @@ onMounted(() => {
 
       <!-- 상세 설명: HTML 렌더링 지원 -->
       <PolicySection title="상세 설명">
-        <div class="prose prose-slate max-w-none whitespace-pre-line leading-relaxed" v-html="safeContent" />
+        <div class="policy-content" v-html="safeContent" />
       </PolicySection>
 
       <!-- 핵심 조항: 트리 구조 -->
@@ -152,18 +157,25 @@ onMounted(() => {
           <div
             v-for="(imgUrl, idx) in store.currentPolicy.images"
             :key="idx"
-            class="overflow-hidden rounded-lg border border-slate-200"
+            class="group overflow-hidden rounded-lg border border-slate-200 cursor-zoom-in"
+            @click="openLightbox(imgUrl)"
           >
             <img
               :src="imgUrl"
               :alt="`이미지 ${idx + 1}`"
-              class="h-56 w-full object-cover"
+              class="h-56 w-full object-cover transition-transform duration-200 group-hover:scale-105"
               loading="lazy"
-              @error="($event.target as HTMLImageElement).style.display = 'none'"
+              @error="($event.target as HTMLImageElement).closest('div')!.style.display = 'none'"
             />
           </div>
         </div>
       </PolicySection>
+
+      <ImageLightbox
+        v-if="lightboxSrc"
+        :src="lightboxSrc"
+        @close="closeLightbox"
+      />
     </div>
 
     <SupportSignModal

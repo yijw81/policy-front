@@ -196,10 +196,10 @@ function setLink() {
       </button>
     </div>
 
-    <!-- 에디터 본문 -->
+    <!-- 에디터 본문: policy-content로 상세 뷰와 동일한 스타일 공유 -->
     <EditorContent
       :editor="editor"
-      class="rich-editor min-h-[160px] px-4 py-3 focus-within:outline-none"
+      class="policy-content rich-editor min-h-[160px] px-4 py-3 focus-within:outline-none"
     />
   </div>
 </template>
@@ -218,17 +218,12 @@ function setLink() {
   outline: none;
   min-height: 140px;
 }
-.rich-editor .ProseMirror h2 { @apply text-xl font-bold mt-3 mb-1; }
-.rich-editor .ProseMirror h3 { @apply text-lg font-semibold mt-2 mb-1; }
-.rich-editor .ProseMirror p { @apply my-1 leading-relaxed; }
-.rich-editor .ProseMirror ul { @apply list-disc pl-5 my-1; }
-.rich-editor .ProseMirror ol { @apply list-decimal pl-5 my-1; }
-.rich-editor .ProseMirror blockquote { @apply border-l-4 border-slate-300 pl-3 text-slate-500 italic my-2; }
-.rich-editor .ProseMirror code { @apply bg-slate-100 rounded px-1 text-sm font-mono; }
-.rich-editor .ProseMirror pre { @apply bg-slate-100 rounded p-3 my-2 font-mono text-sm overflow-x-auto; }
-.rich-editor .ProseMirror a { @apply text-blue-600 underline; }
+/* placeholder */
 .rich-editor .ProseMirror p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
-  @apply text-slate-400 pointer-events-none float-left h-0;
+  color: #94a3b8;
+  pointer-events: none;
+  float: left;
+  height: 0;
 }
 </style>
