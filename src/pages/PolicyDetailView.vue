@@ -53,7 +53,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="mx-auto max-w-4xl px-4 py-8">
+  <main class="mx-auto max-w-7xl px-4 py-8">
     <div v-if="!store.currentPolicy" class="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center">
       <h1 class="mb-2 text-xl font-semibold">정책을 찾을 수 없습니다.</h1>
       <p class="mb-4 text-slate-600">잘못된 접근이거나 삭제된 정책일 수 있습니다.</p>

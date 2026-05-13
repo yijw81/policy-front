@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-white via-slate-50 to-sky-50">
     <nav class="border-b border-slate-200/80 bg-white/85 backdrop-blur">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <RouterLink to="/" class="group inline-flex items-center gap-4">
           <span class="text-[2rem] font-black tracking-tight text-slate-900">잘 잘 잘</span>
           <span class="h-6 w-px bg-gradient-to-b from-blue-500 via-cyan-400 to-emerald-400" />

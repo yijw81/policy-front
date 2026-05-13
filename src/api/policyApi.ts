@@ -1,8 +1,8 @@
 import axios from 'axios'
 import type { CreatePolicyPayload, Policy, SupportSignPayload } from '@/types/policy'
 
-// const http = axios.create({ baseURL: 'https://policy-api.firsttree.net/api' })
-const http = axios.create({ baseURL: 'http://localhost:3000/api' })
+const http = axios.create({ baseURL: 'https://policy-api.firsttree.net/api' })
+// const http = axios.create({ baseURL: 'http://localhost:3000/api' })
 
 export async function fetchPolicies(): Promise<Policy[]> {
   const { data } = await http.get<Policy[]>('/policies')
