@@ -23,6 +23,11 @@ export async function createPolicy(payload: CreatePolicyPayload): Promise<Policy
   return data
 }
 
+export async function updatePolicy(id: string, payload: CreatePolicyPayload): Promise<Policy> {
+  const { data } = await http.put<Policy>(`/policies/${id}`, payload)
+  return data
+}
+
 export async function supportPolicy(policyId: string, payload: SupportSignPayload): Promise<Policy> {
   const { data } = await http.post<Policy>(`/policies/${policyId}/support`, payload)
   return data

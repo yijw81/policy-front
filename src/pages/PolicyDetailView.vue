@@ -75,6 +75,12 @@ onMounted(() => {
           >
             지지 서명하기
           </button>
+          <RouterLink
+            :to="`/policies/${store.currentPolicy.id}/edit`"
+            class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50"
+          >
+            수정
+          </RouterLink>
           <p v-if="error" class="text-sm text-rose-600">{{ error }}</p>
           <p v-if="toast" class="text-sm text-emerald-600">{{ toast }}</p>
         </div>
