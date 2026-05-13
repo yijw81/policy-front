@@ -25,7 +25,7 @@ function closeLightbox() { lightboxSrc.value = '' }
 const safeContent = computed(() =>
   store.currentPolicy
     ? DOMPurify.sanitize(store.currentPolicy.content, {
-        ALLOWED_TAGS: ['b', 'strong', 'i', 'em', 'u', 'br', 'p', 'span', 'ul', 'ol', 'li', 'h3', 'h4', 'a'],
+        ALLOWED_TAGS: ['b', 'strong', 'i', 'em', 'u', 'br', 'p', 'span', 'ul', 'ol', 'li', 'h2', 'h3', 'h4', 'a'],
         ALLOWED_ATTR: ['href', 'target', 'style', 'class']
       })
     : ''
@@ -80,12 +80,6 @@ onMounted(() => {
           >
             지지 서명하기
           </button>
-          <RouterLink
-            :to="`/policies/${store.currentPolicy.id}/edit`"
-            class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50"
-          >
-            수정
-          </RouterLink>
           <p v-if="error" class="text-sm text-rose-600">{{ error }}</p>
           <p v-if="toast" class="text-sm text-emerald-600">{{ toast }}</p>
         </div>
@@ -99,6 +93,7 @@ onMounted(() => {
       </PolicySection>
 
       <!-- 핵심 조항: 트리 구조 -->
+      <!--
       <PolicySection title="핵심 조항">
         <ul class="space-y-3">
           <li
@@ -125,7 +120,7 @@ onMounted(() => {
           </li>
         </ul>
       </PolicySection>
-
+-->
       <!--
       <PolicySection title="기대 효과"><ul class="list-disc space-y-1 pl-5"><li v-for="(item, idx) in store.currentPolicy.expectedEffects" :key="idx">{{ item }}</li></ul></PolicySection>
       <PolicySection title="FAQ / 반대 의견에 대한 답변">
