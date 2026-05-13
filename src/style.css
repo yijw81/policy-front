@@ -6,3 +6,72 @@ body {
   font-family: Inter, Pretendard, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: #0f172a;
 }
+
+/* 에디터와 상세 뷰에서 동일하게 적용되는 공유 콘텐츠 스타일 */
+.policy-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: #0f172a;
+}
+.policy-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  color: #1e293b;
+}
+.policy-content p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.75;
+  min-height: 1em; /* 빈 <p></p> 가 줄바꿈으로 보이게 */
+}
+.policy-content ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.policy-content ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.policy-content li {
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+}
+.policy-content blockquote {
+  border-left: 4px solid #cbd5e1;
+  padding-left: 0.75rem;
+  color: #64748b;
+  font-style: italic;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.policy-content code {
+  background-color: #f1f5f9;
+  border-radius: 0.25rem;
+  padding: 0 0.25rem;
+  font-size: 0.875rem;
+  font-family: ui-monospace, monospace;
+}
+.policy-content pre {
+  background-color: #f1f5f9;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-family: ui-monospace, monospace;
+  overflow-x: auto;
+}
+.policy-content a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+[data-text-align="center"], .policy-content [style*="text-align: center"] { text-align: center; }
+[data-text-align="right"],  .policy-content [style*="text-align: right"]  { text-align: right; }
