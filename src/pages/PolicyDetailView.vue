@@ -6,6 +6,7 @@ import PolicySection from '@/components/PolicySection.vue'
 import SupporterList from '@/components/SupporterList.vue'
 import SupportSignModal from '@/components/SupportSignModal.vue'
 import type { SupportSignPayload } from '@/types/policy'
+import DOMPurify from 'dompurify'
 
 const route = useRoute()
 const store = usePolicyStore()
@@ -15,6 +16,15 @@ const toast = ref('')
 const error = ref('')
 
 const recentSupporters = computed(() => store.currentPolicy?.supporters.slice(0, 6) ?? [])
+
+const safeContent = computed(() =>
+  store.currentPolicy
+    ? DOMPurify.sanitize(store.currentPolicy.content, {
+        ALLOWED_TAGS: ['b', 'strong', 'i', 'em', 'u', 'br', 'p', 'span', 'ul', 'ol', 'li', 'h3', 'h4', 'a'],
+        ALLOWED_ATTR: ['href', 'target', 'style', 'class']
+      })
+    : ''
+)
 
 async function submitSign(payload: SupportSignPayload) {
   if (!store.currentPolicy) return
@@ -71,8 +81,40 @@ onMounted(() => {
       </header>
 
       <PolicySection title="정책 핵심 요약"><p>{{ store.currentPolicy.summary }}</p></PolicySection>
-      <PolicySection title="상세 설명"><p class="whitespace-pre-line">{{ store.currentPolicy.content }}</p></PolicySection>
-      <PolicySection title="핵심 조항"><ul class="list-disc space-y-1 pl-5"><li v-for="(item, idx) in store.currentPolicy.clauses" :key="idx">{{ item }}</li></ul></PolicySection>
+
+      <!-- 상세 설명: HTML 렌더링 지원 -->
+      <PolicySection title="상세 설명">
+        <div class="prose prose-slate max-w-none whitespace-pre-line leading-relaxed" v-html="safeContent" />
+      </PolicySection>
+
+      <!-- 핵심 조항: 트리 구조 -->
+      <PolicySection title="핵심 조항">
+        <ul class="space-y-3">
+          <li
+            v-for="(clause, ci) in store.currentPolicy.clauses"
+            :key="ci"
+            class="rounded-lg border border-slate-100 bg-slate-50 p-3"
+          >
+            <div class="flex items-start gap-2">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                {{ ci + 1 }}
+              </span>
+              <span class="font-medium text-slate-800">{{ clause.text }}</span>
+            </div>
+            <ul v-if="clause.children && clause.children.length" class="mt-2 ml-7 space-y-1">
+              <li
+                v-for="(child, chi) in clause.children"
+                :key="chi"
+                class="flex items-start gap-2 text-sm text-slate-600"
+              >
+                <span class="mt-1 text-slate-400">└</span>
+                <span>{{ child }}</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </PolicySection>
+
       <!--
       <PolicySection title="기대 효과"><ul class="list-disc space-y-1 pl-5"><li v-for="(item, idx) in store.currentPolicy.expectedEffects" :key="idx">{{ item }}</li></ul></PolicySection>
       <PolicySection title="FAQ / 반대 의견에 대한 답변">
@@ -94,6 +136,28 @@ onMounted(() => {
         </div>
       </PolicySection>
       -->
+
+      <!-- 이미지 갤러리 -->
+      <PolicySection
+        v-if="store.currentPolicy.images && store.currentPolicy.images.length"
+        title="관련 이미지"
+      >
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div
+            v-for="(imgUrl, idx) in store.currentPolicy.images"
+            :key="idx"
+            class="overflow-hidden rounded-lg border border-slate-200"
+          >
+            <img
+              :src="imgUrl"
+              :alt="`이미지 ${idx + 1}`"
+              class="h-56 w-full object-cover"
+              loading="lazy"
+              @error="($event.target as HTMLImageElement).style.display = 'none'"
+            />
+          </div>
+        </div>
+      </PolicySection>
     </div>
 
     <SupportSignModal
