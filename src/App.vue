@@ -3,7 +3,7 @@
     <nav class="border-b border-slate-200 bg-white">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <RouterLink
-            to="/policies"
+            to="/"
             class="text-lg font-bold text-slate-900"
         >
           우리는 좋은 정책을 지지합니다.
