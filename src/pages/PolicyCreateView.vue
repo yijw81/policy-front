@@ -2,6 +2,7 @@
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import DynamicTextListInput from '@/components/DynamicTextListInput.vue'
+import ClauseTreeInput from '@/components/ClauseTreeInput.vue'
 import FaqInputList from '@/components/FaqInputList.vue'
 import { usePolicyStore } from '@/stores/policyStore'
 
@@ -15,9 +16,10 @@ const form = reactive({
   author: '',
   summary: '',
   content: '',
-  clauses: [''],
+  clauses: [{ text: '', children: [] as string[] }],
   expectedEffects: [''],
-  faqs: [{ question: '', answer: '' }]
+  faqs: [{ question: '', answer: '' }],
+  images: ['']
 })
 
 async function onSubmit() {
@@ -28,9 +30,10 @@ async function onSubmit() {
     author: form.author || '익명 작성자',
     summary: form.summary,
     content: form.content,
-    clauses: form.clauses.filter(Boolean),
+    clauses: form.clauses.filter((c) => c.text),
     expectedEffects: form.expectedEffects.filter(Boolean),
-    faqs: form.faqs.filter((faq) => faq.question && faq.answer)
+    faqs: form.faqs.filter((faq) => faq.question && faq.answer),
+    images: form.images.filter(Boolean)
   })
 
   await router.push(`/policies/${created.id}`)
@@ -48,11 +51,16 @@ async function onSubmit() {
       </select>
       <input v-model="form.author" type="text" placeholder="작성자" class="w-full rounded-lg border border-slate-300 px-3 py-2" />
       <textarea v-model="form.summary" required rows="3" placeholder="핵심 요약" class="w-full rounded-lg border border-slate-300 px-3 py-2" />
-      <textarea v-model="form.content" required rows="5" placeholder="상세 설명" class="w-full rounded-lg border border-slate-300 px-3 py-2" />
+
+      <div>
+        <p class="mb-1 font-medium">상세 설명</p>
+        <p class="mb-2 text-xs text-slate-500">HTML 태그를 지원합니다. 예: &lt;b&gt;볼드&lt;/b&gt;, &lt;i&gt;이탤릭&lt;/i&gt;, &lt;u&gt;밑줄&lt;/u&gt;</p>
+        <textarea v-model="form.content" required rows="6" placeholder="상세 설명 (HTML 사용 가능)" class="w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm" />
+      </div>
 
       <div>
         <p class="mb-2 font-medium">핵심 조항</p>
-        <DynamicTextListInput v-model="form.clauses" />
+        <ClauseTreeInput v-model="form.clauses" />
       </div>
 
       <div>
@@ -63,6 +71,12 @@ async function onSubmit() {
       <div>
         <p class="mb-2 font-medium">FAQ</p>
         <FaqInputList v-model="form.faqs" />
+      </div>
+
+      <div>
+        <p class="mb-1 font-medium">이미지</p>
+        <p class="mb-2 text-xs text-slate-500">이미지 URL을 입력하세요.</p>
+        <DynamicTextListInput v-model="form.images" />
       </div>
 
       <button class="w-full rounded-lg bg-blue-600 px-4 py-2 font-medium text-white">저장</button>

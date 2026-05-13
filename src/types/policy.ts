@@ -11,6 +11,11 @@ export interface PolicyFaq {
   answer: string
 }
 
+export interface ClauseNode {
+  text: string
+  children: string[]
+}
+
 export interface Policy {
   id: string
   title: string
@@ -19,9 +24,10 @@ export interface Policy {
   author: string
   summary: string
   content: string
-  clauses: string[]
+  clauses: ClauseNode[]
   expectedEffects: string[]
   faqs: PolicyFaq[]
+  images: string[]
   supporters: Supporter[]
   createdAt: string
 }
@@ -41,7 +47,8 @@ export interface CreatePolicyPayload {
   author: string
   summary: string
   content: string
-  clauses: string[]
+  clauses: ClauseNode[]
   expectedEffects: string[]
   faqs: PolicyFaq[]
+  images: string[]
 }
