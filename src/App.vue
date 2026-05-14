@@ -3,9 +3,9 @@
     <nav class="border-b border-slate-200/80 bg-white/85 backdrop-blur">
       <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <RouterLink to="/" class="group inline-flex items-center gap-4">
-          <span class="text-[2rem] font-black tracking-tight text-slate-900">잘 잘 잘</span>
+          <span class="text-[1.4rem] md:text-[2rem] font-black tracking-tight text-slate-900">잘 잘 잘</span>
           <span class="h-6 w-px bg-gradient-to-b from-blue-500 via-cyan-400 to-emerald-400" />
-          <span class="text-lg font-semibold text-slate-700">
+          <span class="text-sm md:text-lg font-semibold text-slate-700">
             정책도 잘, 리더도 잘, 나라도
             <span class="bg-gradient-to-r from-blue-500 to-emerald-400 bg-clip-text text-transparent">잘</span>
           </span>
