@@ -158,7 +158,7 @@ onMounted(() => {
             <img
               :src="imgUrl"
               :alt="`이미지 ${idx + 1}`"
-              class="h-56 w-full object-cover transition-transform duration-200 group-hover:scale-105"
+              class="h-56 w-full object-contain transition-transform duration-200 group-hover:scale-105"
               loading="lazy"
               @error="($event.target as HTMLImageElement).closest('div')!.style.display = 'none'"
             />

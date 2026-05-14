@@ -12,6 +12,7 @@ defineProps<{ policy: Policy }>()
     </div>
     <h3 class="mb-2 text-lg font-semibold text-slate-900">{{ policy.title }}</h3>
     <p class="mb-4 line-clamp-2 text-sm text-slate-600">{{ policy.description }}</p>
+    <p class="mb-4 line-clamp-2 text-sm text-slate-600"><strong>작성자</strong> : {{ policy.author }}</p>
     <RouterLink :to="`/policies/${policy.id}`" class="inline-flex rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700">
       자세히 보기
     </RouterLink>
